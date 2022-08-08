@@ -87,7 +87,7 @@ virtualenv -p python3 venv
 ```  
 Ejecutamos el entorno virtual
 ```virtualenvactivate
-.\env\Scripts\activate
+.\venv\Scripts\activate
 ```  
 Instalamos las librerias necesarias para la ejecucion de la prueba
 ```requierements
