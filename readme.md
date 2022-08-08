@@ -21,14 +21,13 @@ Es un plus si:
 
 ---
 # Diseño de la solución
-ademas de los requerimientos propuestos en la prueba, la solución fue desarrollada de manera que pueda cumplir con los siguientes requisitos:
-
+ademas de los requerimientos propuestos en la prueba, la solución fue desarrollada de manera que pueda cumplir con los siguientes requisitos:  
+- Con el fin de que el código realizado en esta solución pueda ser aprovechado y ampliado en otras soluciones,se desarrollo con un enfoque orientado a objetos.  
 - Realizar la peticion de datos a **cualquier restapi** que no solicite key y no solamente a la api de restcountries, ejemplo:\
-  https://pokeapi.co/api/v2/pokemon/\
-  https://randomuser.me/api/\
-  https://catfact.ninja/fact 
-  
-- Extraer cualquier cantidad de campos deseados del json **sin reescribir el codigo**
+  https://pokeapi.co/api/v2/pokemon/  
+  https://randomuser.me/api/  
+  https://catfact.ninja/fact  
+- Extraer cualquier cantidad de campos deseados del json **sin reescribir el codigo**  
 - Implementar una manera de modificar los datos de una columna de forma que no implique reescribir codigo, por ejemplo encriptar el lenguaje del pais en SHA1
 
 la solucion puede ser configurada a traves del archivo **.env** que tiene formato json con los siguientes campos: 
@@ -73,4 +72,29 @@ para dar solución a la prueba propuesta el archivo de consulta **countries.json
 "Mexico",  
 "Colombia",  
 "Argentina",  
-]}
+]}  
+  
+
+---
+# Ejecución de la solución
+Instalar la libreria **virtualenv**
+```virtualenv
+pip install virtualenv
+```  
+Creamos el entorno virtual
+```virtualenvcreate
+virtualenv -p python3 venv
+```  
+Ejecutamos el entorno virtual
+```virtualenvactivate
+.\env\Scripts\activate
+```  
+Instalamos las librerias necesarias para la ejecucion de la prueba
+```requierements
+pip install -r .\requirements.txt
+```  
+Ejecutamos la prueba a traves del script *main.py*
+```main.py
+python .\main.py
+```
+las salida de los datos sera visualizada a traves de la consola  y del fichero data.json
