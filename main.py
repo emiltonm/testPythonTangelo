@@ -14,17 +14,23 @@ def add_plus(value):
 
 
 if __name__ == '__main__':
+
     #lectura de archivo de configuracion
     configuration=".env"
-    #configuration="__pokemonCFG.json"
     with open(configuration,"r") as archivo:
         file=archivo.read()
     cfg=json.loads(file)
-    #creacion de objeto rq para peticiones
-    data_request=dict(zip(cfg["name_columns"],cfg["path_data"]))
+    
+    #creacion de objeto de base de datos
     db=Databases(cfg["db_name"])
+    #creo un diccionario con la lista name_columns (llave) y la lista path_data (valor)
+    data_request=dict(zip(cfg["name_columns"],cfg["path_data"]))
+
     data_db=[cfg["db_name"],cfg["table_name"],cfg["index_column"]]
+    
+    #creacion de objeto rq para la realizacion de peticiones
     rq=RqObjects(cfg["url"],data_request,data_db)
+    
     #columnas que quiero afectar, con la funcion...
     rq.set_alter_field("Language",hash_SHA1)
     print("")

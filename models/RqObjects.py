@@ -21,8 +21,7 @@ class RqObjects:
         self.__nameDB=db_data[0]
         self.__tableName=db_data[1]
         self.__index_columns=db_data[2]
-        for key,value in dict_data.items():
-            self.__path[key]=value
+        self.__path=dict_data
         columns_name = list(dict_data.keys())
         columns_name.append('time')
         self.__df=pd.DataFrame(columns=columns_name)
@@ -30,9 +29,10 @@ class RqObjects:
         self.__load_cache()
 
     def get_data(self,field_name):
+        #si el campo NO existe en el data frame cache
         if(self.__df_cache[self.__df_cache[self.__index_columns]==field_name].empty):
             print(field_name+" no existe en cache")
-            #realiza peticion a la API y guarda en cache
+            #realizo peticion a la API y guarda en cache
             try:
                 url = self.__url + field_name
                 start_time = time.time()
