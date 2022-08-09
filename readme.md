@@ -126,13 +126,14 @@ def hash_SHA1(value):
 - **tableName**: privado de tipo String contiene el nombre de la tabla donde se almacenara el dataframe principal  
 - **index_columns**: privado de tipo String  contiene el nombre de la columna mediante el cual se verificara si la peticion ya se encuentra en la base de datos  
 ### Métodos
-- **__init__**: constructor de la clase RqObjects, recibe como parámetros la url de la api a consultar, un diccionario con los nombres de las columnas como llaves y las rutas a los valores del json como valores por ultimo recibe una lista que contiene la ruta y nombre de la base de datos, el nombre de la tabla donde se almacenara el dataframe principal y la columna que se utilizara para verificar si la petición ya se encuentra en la base de datos. se encarga de inicializar los atributos privados de la clase y cargar los datos almacenados en la base de datos en el atributo df_cache a través del método privado load_cache
+- **__init__(Str,Dict,List)**: constructor de la clase RqObjects, recibe como parámetros la url de la api a consultar, un diccionario con los nombres de las columnas como llaves y las rutas a los valores del json como valores por ultimo recibe una lista que contiene la ruta y nombre de la base de datos, el nombre de la tabla donde se almacenara el dataframe principal y la columna que se utilizara para verificar si la petición ya se encuentra en la base de datos. se encarga de inicializar los atributos privados de la clase y cargar los datos almacenados en la base de datos en el atributo df_cache a través del método privado load_cache    
+- **get_data(Str)**: recibe como parámetro el valor a requerir de la API, se encarga de buscar dicho parámetro primeramente en la base de datos cargada en dataframe cache y si no es encontrado realiza la petición al api almacena los resultados de la petición en el dataframe principal df y guarda en la base de datos
 ## Class Databases
 ![database](images/databases.jpg)   
 ### Atributos
 - **path_name**: privado de tipo String contiene la ruta y el nombre de la base de datos donde será almacenado el dataframe principal df  
 ### Métodos  
-- **__init__**: constructor de la clase, recibe la ruta completa donde se desea crear la base de datos, para luego crearla, si esta ya existe imprime un mensaje en consola y no realiza ninguna otra acción  
+- **__init__(Str)**: constructor de la clase, recibe la ruta completa donde se desea crear la base de datos, para luego crearla, si esta ya existe imprime un mensaje en consola y no realiza ninguna otra acción  
 - **String get_path_name()**: retorna un String que contiene la ruta y el nombre de la base de datos donde será almacenado el dataframe principal df  
 ---  
 # Configuración de la solución  
