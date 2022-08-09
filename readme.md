@@ -101,34 +101,39 @@ def hash_SHA1(value):
 # Descripción de clases
 ## clase RqObjects  
 ![object](images/rqobjects.jpg)  
-- **Atributo url**: privado de tipo string es utilizado para almacenar la url de la api a consultar ejemplos:  
+### Atributos
+- **url**: privado de tipo string es utilizado para almacenar la url de la api a consultar ejemplos:  
 “https://restcountries.com/v2/name/”  
 ”https://pokeapi.co/api/v2/pokemon/”  
-- **Atributo path**: privado de tipo Diccionario(string, string) es utilizado para almacenar la ruta de los valores del json referenciados por una llave que es el nombre de la columna ejemplos:  
+- **path**: privado de tipo Diccionario(string, string) es utilizado para almacenar la ruta de los valores del json referenciados por una llave que es el nombre de la columna ejemplos:  
 {“tipo”:” types[0].type.name”}  
 {“continente”:” [0].region”}  
-- **Atributo data**: privado de tipo Diccionario(string, string) se utiliza para almacenar los datos que serán necesarios para crear la nueva fila del dataframe,su longitud depende de las columnas que se quieran obtener de la peticion ejemplos:  
+- **data**: privado de tipo Diccionario(string, string) se utiliza para almacenar los datos que serán necesarios para crear la nueva fila del dataframe,su longitud depende de las columnas que se quieran obtener de la peticion ejemplos:  
 {“nombre”:”pikachu”,”tipo”:”Electric”…}  
 {“Region”:”Americas”,”Country”:”Colombia”,” Language”:”Spanish”… }  
-- **Atributo alter**: privado de tipo Diccionario(string, ref_function) se utiliza para almacenar los nombres de las columnas y la referencia a la función que va alterar esa columna ejemplo:  
+- **alter**: privado de tipo Diccionario(string, ref_function) se utiliza para almacenar los nombres de las columnas y la referencia a la función que va alterar esa columna ejemplo:  
 {“tipo”:cambiar_tipo}  
 {“Language”:hash_SHA1}  
-- **Atributo df**: privado de tipo pandas dataframe, se utiliza para almacenar los valores extraidos de la peticion, también se utiliza para generar el archivo data.json Ejemplo:  
+- **df**: privado de tipo pandas dataframe, se utiliza para almacenar los valores extraidos de la peticion, también se utiliza para generar el archivo data.json Ejemplo:  
   
     |   | Region | Country | Language                                 | time  |
     |---|--------|---------|------------------------------------------|-------|
     | 0 | Africa | Angola  | 23882c575954a0789bf02aba9e6dd01f539bc738 | 0.000 |
     | 1 | Europe | Spain   | 8df7f1b361b2af42d36011e00d22c0f9891ec0b0 | 0.000 |
 
-- **Atributo df_cache**: privado de tipo pandas dataframe, se utiliza para almacenar los valores extraídos de la base de datos utilizada como cache para evitar peticiones innecesarias al api, posee la misma estructura que el atributo df  
-- **Atributo nameBD**: privado de tipo String contiene la ruta y el nombre de la base de datos donde será almacenado el dataframe principal df  
-- **Atributo tableName**: privado de tipo String contiene el nombre de la tabla donde se almacenara el dataframe principal  
-- **Atributo index_columns**: privado de tipo String  contiene el nombre de la columna mediante el cual se verificara si la peticion ya se encuentra en la base de datos
+- **df_cache**: privado de tipo pandas dataframe, se utiliza para almacenar los valores extraídos de la base de datos utilizada como cache para evitar peticiones innecesarias al api, posee la misma estructura que el atributo df  
+- **nameBD**: privado de tipo String contiene la ruta y el nombre de la base de datos donde será almacenado el dataframe principal df  
+- **tableName**: privado de tipo String contiene el nombre de la tabla donde se almacenara el dataframe principal  
+- **index_columns**: privado de tipo String  contiene el nombre de la columna mediante el cual se verificara si la peticion ya se encuentra en la base de datos  
+### Métodos
 
-## clase RqObjects  
+## Class Databases
 ![database](images/databases.jpg)   
-descripción de atributos y metodos de la clase databases
----
+### Atributos
+- **path_name**: privado de tipo String contiene la ruta y el nombre de la base de datos donde será almacenado el dataframe principal df  
+### Métodos  
+- **String get_path_name()**: retorna un String que contiene la ruta y el nombre de la base de datos donde será almacenado el dataframe principal df  
+---  
 # Configuración de la solución  
 La solución puede ser configurada a través del archivo **.env** que tiene formato json con los siguientes campos: 
 
