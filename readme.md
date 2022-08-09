@@ -51,16 +51,28 @@ el diccionario para resolver la situación planteada por el test tendría la sig
 -	En el constructor del objeto principal de consulta (rq) abrimos la tabla (table_name) de la base de datos (db_name) y cargamos su contenido en el data frame cache (__df_cache) este dataframe será consultado antes de hacer las peticiones al api, para evitar peticiones innecesarias a esta y ahorrando tiempos de proceso ya que la petición sería mucho más rápido en caso de que el data frame tenga la información que se requiere.
 -	A través del método publico set_alter_field(“name_colum”,ref a function) del objeto principal de consulta(rq) establezco  que columnas (name_colum) del dataframe principal (__df) serán afectadas por la función (ref a function). Estos valores recibidos por la función son guardados en un diccionario (__alter).
 En la creación de los rows para el dataframe principal (__df) se revisa si el nombre de la columna se encuentra en el dataframe de modificación (__alter) en caso de encontrarse, el valor original que correspondía a esta columna es enviado a la función que esta como valor en el diccionario de modificación(__alter) y es reemplazado por el valor que retorna la función, en caso de no encontrarse el nombre de la columna como llave en el diccionario de modificación(__alter) se almacena el valor original.  
-Para hacer referencia a una función se coloca el nombre de la función sin las paréntesis ni argumentos. 
+Para hacer referencia a una función se coloca el nombre de la función sin las paréntesis ni argumentos.  
+  
+Ejemplo:  
+```
+#Función que recibe un valor y lo devuelve encriptado en SHA1  
+def hash_SHA1(value):  
+    return hashlib.sha1(value.encode('utf-8')).hexdigest()  
+    . . .
+#Los valores de la columna Language serán reemplazado por el valor que retorne la función hash_SHA1  
+    rq.set_alter_field("Language", hash_SHA1)
+```
+
+
 
 ---
 # Descripción de clases
 ## clase RqObjects  
 ![object](images/rqobjects.jpg)  
-descripcion de atributos y metodos de la clase RqObjects
+descripción de atributos y metodos de la clase RqObjects
 ## clase RqObjects  
 ![database](images/databases.jpg)   
-descripcion de atributos y metodos de la clase databases
+descripción de atributos y metodos de la clase databases
 ---
 # Configuración de la solución  
 La solución puede ser configurada a través del archivo **.env** que tiene formato json con los siguientes campos: 
