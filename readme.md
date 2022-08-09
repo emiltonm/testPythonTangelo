@@ -48,7 +48,8 @@ el diccionario para resolver la situación planteada por el test tendría la sig
 {'Region': '[0].region', 'Country': '[0].name', 'Language': '[0].languages[0].name'}  
 -	Creo una lista con los datos necesarios para el acceso a la base de datos nombre de la base de datos, nombre de la tabla donde se guardará el dataframe, nombre de la columna que sirve como índice para la búsqueda en la base de datos esta misma columna es la que contiene los valores con los que se realizaron las peticiones al api. Estos valores están guardados en el archivo de configuración (.env) bajo el nombre db_name, table_name, index_column respectivamente.
 -	Creo el objeto principal de consulta al api (rq) con la url de la api (url), el diccionario (data_request) y la lista (data_db) creada anteriormente como parámetros del constructor.  
-
+---
+# Configuración de la solución  
 La solución puede ser configurada a través del archivo **.env** que tiene formato json con los siguientes campos: 
 
 >{  
