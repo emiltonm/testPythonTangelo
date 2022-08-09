@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
     #lectura de archivo de configuracion
     configuration=".env"
-    with open(configuration,"r") as archivo:
-        file=archivo.read()
+    with open(configuration,"r") as fl:
+        file=fl.read()
     cfg=json.loads(file)
     
     #creacion de objeto de base de datos
@@ -35,8 +35,8 @@ if __name__ == '__main__':
     rq.set_alter_field("Language",hash_SHA1)
     print("")
     #leo lista de consultas
-    with open(cfg["query_file"],"r") as archivo:
-        file=archivo.read()
+    with open(cfg["query_file"],"r") as fl:
+        file=fl.read()
     list_query=json.loads(file)
     for q in list_query["query"]:
         rq.get_data(q)
