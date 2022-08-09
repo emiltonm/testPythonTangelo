@@ -62,6 +62,14 @@ def hash_SHA1(value):
 #Los valores de la columna Language serán reemplazado por el valor que retorne la función hash_SHA1  
     rq.set_alter_field("Language", hash_SHA1)
 ```
+-	Cargo el archivo json donde están guardados los datos a consultar en la api, este archivo esta indicado en (query_file) del archivo de configuración (.env)
+-	Recorro los datos del archivo json (query_files) y los paso como parámetros al método get_data del objeto de consulta principal (rq)
+-	Imprimo en consola el dataframe principal (_df) a través del método get_data_frame del objeto principal de consulta (rq)
+-	Imprimo en consola el tiempo total de generación del dataframe a través del método get_total_time del objeto principal de consulta (rq)
+-	Imprimo en consola el tiempo promedio de generación de las filas través del método get_average_time del objeto principal de consulta (rq)
+-	Imprimo en consola el tiempo más alto de generación de las filas través del método get_max_time del objeto principal de consulta (rq)
+-	Imprimo en consola el tiempo más corto de generación de las filas través del método get_min_time del objeto principal de consulta (rq)
+-	Guardo el dataframe principal (__df) en formato json con del nombre de data.json a traves del método sendTo_JSON del objeto principal de consulta (rq)
 
 
 
