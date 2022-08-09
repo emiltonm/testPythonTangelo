@@ -220,4 +220,14 @@ python .\main.py
 
 ---
 
-las salida de los datos será visualizada a través de la consola la base de datos y del fichero data.json
+Las salida de los datos será visualizada a través de la consola la base de datos y del fichero data.json
+
+# Próximas implementaciones
+-	Cambiar el nombre del método get_data() de la clase RqObjects por req_data()
+-	Corregir Bug la carpeta donde se creara la base de datos en caso de no existir debe existir
+-	No guardar la columna tiempo en la base de datos ya que siempre es recalculada
+-	Para poder alterar columnas sin modificar el código podría variar a que en vez de llamar a una función ejecute un script de python externo el cual tendría la función que altera la columna permitiendo así incluirlo en el archivo de configuración tipo:
+{“nombre_columna_a_modificar”,“script/funtion.py”}
+-	Implementar pruebas unitarias
+-	Mejora búsqueda para nombres largos como United State of Americas  
+
