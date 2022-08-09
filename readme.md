@@ -64,6 +64,30 @@ def hash_SHA1(value):
 ```
 -	Cargo el archivo json donde están guardados los datos a consultar en la api, este archivo esta indicado en (query_file) del archivo de configuración (.env)
 -	Recorro los datos del archivo json (query_files) y los paso como parámetros al método get_data del objeto de consulta principal (rq)
+-	Al llamar a la funcion get_data del objeto principal de consulta(rq):  
+    -	Verifico si el campo esta guardado en el dataframe cache:  
+        - Si:  
+          - Envío mensaje a consola diciendo que existe en la cache  
+          - Inicio el conteo del tiempo para saber cuánto tiempo demora en registrarse la fila al dataframe principal  
+          - Agrego la fila encontrada en el dataframe cache al dataframe principal df  
+          - Detengo el conteo del tiempo
+          - Calculo el tiempo tardado en generar la nueva fila en el dataframe principal  
+          - Actualizo el valor de la columna time por el nuevo valor calculado  
+        - No:  
+          - Envio mensaje diciendo que no existe en cache
+          - Inicio el conteo del tiempo para saber cuánto tiempo demora en registrarse la fila al dataframe principal
+          - Realizo la petición a la url:
+            - Respuesta positiva:
+              - Itero el diccionario path obteniendo los valores de la ruta json
+              - Dentro de una excepción try intento alterar su valor con la función referenciada si funciona asigno el valor modificado a la columna correspondiente del dataframe original
+              - En caso de no funcionar asigno el valor original a la columna correspondiente del dataframe principal
+              - Detengo el conteo del tiempo
+              - Calculo el tiempo tardado en generar la nueva fila en el dataframe principal
+              - Actualizo el valor de la columna time por el nuevo valor calculado
+              - Guardo la fila como registro en la base de datos
+            - Respuesta negativa:
+              - Envío mensaje a consola diciendo petición url fallida
+
 -	Imprimo en consola el dataframe principal (_df) a través del método get_data_frame del objeto principal de consulta (rq)
 -	Imprimo en consola el tiempo total de generación del dataframe a través del método get_total_time del objeto principal de consulta (rq)
 -	Imprimo en consola el tiempo promedio de generación de las filas través del método get_average_time del objeto principal de consulta (rq)

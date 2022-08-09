@@ -38,11 +38,15 @@ class RqObjects:
                 start_time = time.time()
                 response = requests.get( url )
                 if response.status_code == 200:
+                    #recorro el diccionario path
                     for key,path in self.__path.items():
+                        #obtengo el valor de la ruta json
                         raw_value=jmespath.search(path,response.json())
                         try:
+                            #intento alterar el valor con la funcion del diccionario alter
                             self.__data[key]=self.__alter[key](raw_value)
                         except:
+                            #si no es posible alterar asigno el valor original
                             self.__data[key]=raw_value
                     end_time = time.time()
                     time_row = (end_time - start_time) * 1000
@@ -58,6 +62,8 @@ class RqObjects:
             print(field_name+" existe en cache")
             #recupera de cache
             start_time = time.time()
+            #devuelvo los valores que cumplen la condicion cache[nombrecolumna]=="loquebusco"
+            #cache["Country"]=="Colombia"
             self.__data=self.__df_cache[self.__df_cache[self.__index_columns]==field_name].iloc[0].to_dict()
             end_time = time.time()
             self.__df.loc[-1]=self.__data
