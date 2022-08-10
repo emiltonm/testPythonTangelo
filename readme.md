@@ -18,20 +18,9 @@ Es un plus si:
 - No usa framework.
 - Entrega Test Unitarios.
 - Presenta un diseño de su solución.
-
-
 ---
-# Otros Requerimientos
-Además de los requerimientos propuestos en la prueba, la solución fue desarrollada de manera que pueda cumplir con los siguientes requisitos:  
-- El código escrito en esta solución pueda ser aprovechado y ampliado en otras soluciones. 
-- Con el fin de cumplir el requerimiento anterior se realizará aplicando la POO.
-- Realizar la petición de datos a cualquier restapi que no solicite key y no solamente al api de restcountries, ejemplo:  
-  https://pokeapi.co/api/v2/pokemon/  
-  https://randomuser.me/api/  
-  https://catfact.ninja/fact  
-- Extraer cualquier cantidad de campos deseados del json **sin reescribir el código**.  
-- Implementar una manera de modificar los datos de una columna de forma que no implique reescribir código, por ejemplo encriptar el lenguaje del país en SHA1.
-- Aprovechar el almacenamiento del dataframe en la base de datos para evitar peticiones innecesarias al api, disminuyendo la carga de esta e incrementando la velocidad de respuesta de la solución.
+# Diagrama de flujo principal  
+![diagrama](images/diagramFlow.jpg)
 
 ---
 # Paso a paso de la solución 
@@ -219,6 +208,18 @@ python .\main.py
 ```
 
 ---
+# Otras caracteristicas
+Además de los requerimientos propuestos en la prueba, la solución fue desarrollada de manera que pueda cumplir con los siguientes requisitos:  
+- El código escrito en esta solución pueda ser aprovechado y ampliado en otras soluciones. 
+- Con el fin de cumplir el requerimiento anterior se realizará aplicando la POO.
+- Realizar la petición de datos a cualquier restapi que no solicite key y no solamente al api de restcountries, ejemplo:  
+  https://pokeapi.co/api/v2/pokemon/  
+  https://randomuser.me/api/  
+  https://catfact.ninja/fact  
+- Extraer cualquier cantidad de campos deseados del json **sin reescribir el código**.  
+- Implementar una manera de modificar los datos de una columna de forma que no implique reescribir código, por ejemplo encriptar el lenguaje del país en SHA1.
+- Aprovechar el almacenamiento del dataframe en la base de datos para evitar peticiones innecesarias al api, disminuyendo la carga de esta e incrementando la velocidad de respuesta de la solución.
+
 
 Las salida de los datos será visualizada a través de la consola la base de datos y del fichero data.json
 
