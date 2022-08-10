@@ -24,8 +24,8 @@ Es un plus si:
 
 ---
 # Paso a paso de la solución 
--	Cargo la configuración necesaria desde un archivo con formato json (.env) para la creación de un objeto encargado de ejecutar las peticiones guardar en la base de datos y crear el archivo data.json
--	Creo el objeto database (db) en cuyo constructor valido si la base de datos existía previamente. Si existe solo se envía un mensaje a consola diciendo que ya existe, en caso de que no, esta es creada con el nombre dado en el archivo de configuración (db_name)
+-	Se carga la configuración necesaria desde un archivo con formato json (.env) para la creación de un objeto global encargado de ejecutar las peticiones, guardar en la base de datos y crear el archivo data.json
+-	Se crea el objeto database (db) en cuyo constructor valido si la base de datos existía previamente. Si existe solo se envía un mensaje a consola diciendo que ya existe, en caso de que no, esta es creada con el nombre dado en el archivo de configuración (db_name)
 -	Creo un diccionario a partir de las listas de nombre de las columnas (name_colums) que funcionaran como llaves y ruta del dato (path_data) que funcionara como valor, ambas listas se encuentran en el archivo de configuración (.env).  
 Este diccionario será pasado como parámetro de nuestro objeto encargado de realizar las consultas (rq) para ser iterado, permitiendo así trabajar con una cantidad n de columnas sin tener que modificar el código, solo el archivo de configuración.  
 Para lograr este objetivo utilizamos la librería **jmespath** que permite acceder a los valores de los archivos json a través de un string que contiene la ruta para llegar hasta este valor, ejemplo:  
@@ -51,7 +51,7 @@ def hash_SHA1(value):
 #Los valores de la columna Language serán reemplazado por el valor que retorne la función hash_SHA1  
     rq.set_alter_field("Language", hash_SHA1)
 ```
--	Cargo el archivo json donde están guardados los datos a consultar en la api, este archivo esta indicado en (query_file) del archivo de configuración (.env)
+-	Se carga el archivo json donde están guardados los datos a consultar en la api, este archivo esta indicado en (query_file) del archivo de configuración (.env)
 -	Recorro los datos del archivo json (query_files) y los paso como parámetros al método get_data del objeto de consulta principal (rq)
 -	Al llamar a la funcion get_data del objeto principal de consulta(rq):  
     -	Verifico si el campo esta guardado en el dataframe cache:  
